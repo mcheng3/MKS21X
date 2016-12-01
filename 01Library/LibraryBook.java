@@ -10,7 +10,7 @@ public abstract class LibraryBook extends Book implements Comparable<LibraryBook
 		return callNumber;
 	}
 
-	public void setCallNumber(callNumber){
+	public void setCallNumber(String callNumber){
 		this.callNumber = callNumber;
 	}
 
@@ -21,10 +21,10 @@ public abstract class LibraryBook extends Book implements Comparable<LibraryBook
 	public abstract String circulationStatus();
 
 	public int compareTo(LibraryBook bk){
-		return Integer.compare(this.callNumber, callNumber);
+		return Integer.compare(Integer.parseInt(callNumber), Integer.parseInt(bk.callNumber));
 	}
 
 	public String toString(){
-		super.toString() + ", "+ callNumber;
+		return super.toString() + " , " + callNumber;
 	}
 }

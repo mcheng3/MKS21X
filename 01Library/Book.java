@@ -10,7 +10,7 @@ public class Book{
 	public Book(String author, String title, String isbn){
 		this.author = author;
 		this.title = title;
-		thils.isbn = isbn;	
+		this.isbn = isbn;	
 	}
 
 	public String getAuthor(){
@@ -38,7 +38,7 @@ public class Book{
 	}
 
 	public String toString(){
-		return title + ", " + author + ", " + isbn + " ";
+		return title + ", " + author + ", " + isbn;
 	}
 
 
