@@ -1,4 +1,32 @@
+import java.util.ArrayList;
+import java.util.Collections;
 
+public class Library {
+	ArrayList<LibraryBook> bookList;
+  public Library () {
+		bookList = new ArrayList<LibraryBook> ();
+	}
+
+	/**
+	 * adds the given book to the library
+	 * @param book
+	 */
+	public void addBook (LibraryBook book) {
+		bookList.add(book);
+	}
+
+	/**
+	 * prints all books in the library
+	 */
+	public void printLibrary () {
+		System.out.println ("\nListing of books in the library\n");
+		for (LibraryBook book: bookList)
+			System.out.println (book);
+		System.out.println ("End of book listing\n");
+	}
+
+	/**
+	 * locates a book in the library
 	 * @param book book being search in the library
 	 * @return book object if book is found
 	 *         null otherwise
