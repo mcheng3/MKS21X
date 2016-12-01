@@ -18,7 +18,7 @@ public class CirculatingBook extends LibraryBook{
 
 	public String circulationStatus(){
 		if(currentHolder.compareTo("") == 0){
-			return "book available on shelves"
+			return "book available on shelves";
 		}
 		else return currentHolder + "    due: " + dueDate;
 	}
@@ -27,6 +27,6 @@ public class CirculatingBook extends LibraryBook{
 		if(currentHolder.compareTo("") == 0){
 			return super.toString();
 		}
-		else return super.toString() + ", " + currentHolder + ", "dueDate
+		else return super.toString() + ", " + currentHolder + ", " + dueDate;
 	}
 }
