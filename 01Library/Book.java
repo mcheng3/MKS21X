@@ -1,2 +1,3 @@
-
-WOW.jpeg
+public class Book{
+	PEIFJDKJF:LSDJFO:EIFJEO:SIFJf
+}
