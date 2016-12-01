@@ -12,19 +12,19 @@ public class CirculatingBook extends LibraryBook{
 	}
 
 	public void returned(){
-		currentHolder = "";
-		dueDate = "";
+		currentHolder = null;
+		dueDate = null;
 	}
 
 	public String circulationStatus(){
-		if(currentHolder.compareTo("") == 0){
+		if(currentHolder == null){
 			return "book available on shelves";
 		}
 		else return currentHolder + "    due: " + dueDate;
 	}
 
 	public String toString(){
-		if(currentHolder.compareTo("") == 0){
+		if(currentHolder == null){
 			return super.toString();
 		}
 		else return super.toString() + ", " + currentHolder + ", " + dueDate;

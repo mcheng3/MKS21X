@@ -15,11 +15,11 @@ public class ReferenceBook extends LibraryBook{
 	}
 
 	public void checkout(String patron, String due){
-		throw new IllegalStateException("Cannot check out a reference book");
+		System.out.println(new IllegalStateException("Cannot check out a reference book"));
 	}
 
 	public void returned(){
-		throw new IllegalStateException("reference book could not have been check out -- return impossible");
+		System.out.println(new IllegalStateException("reference book could not have been check out -- return impossible"));
 	}
 
 	public String circulationStatus(){
