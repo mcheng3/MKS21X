@@ -1,5 +1,5 @@
-
-public class SuperArray{
+import java.util.*;
+public class SuperArray implements Iterable<String>{
 	private String[] data;
 	private int size;
 	
@@ -11,11 +11,17 @@ public class SuperArray{
 		size = 0;
 	}
 
+	
 	public SuperArray(int initialCapacity){
 		if(initialCapacity < 0) throw new IllegalArgumentException();
 		data = new String[initialCapacity];
 		size = 0;
 	}
+
+	public Iterator<String> iterator(){
+		return new SuperArrayIterator(this);
+	}
+
 
 	public int size(){
 		return size;
@@ -134,4 +140,8 @@ public class SuperArray{
 		}
 		return -1;
 	}
+
+	//public static void main(String[] args){
+
+	//}
 }
