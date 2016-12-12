@@ -7,10 +7,10 @@ public class Barcode{
 		checkSum();
     }
 
-    public String toCode(){
+    public static String toCode(String zip){
 		String code = "|";
-		for(int i = 0; i< _zip.length(); i++){
-	    	switch(_zip.charAt(i) - '0'){
+		for(int i = 0; i< zip.length(); i++){
+	    	switch(zip.charAt(i) - '0'){
 	    		case 1: code += ":::||";
 				case 2: code += "::|:|";
 				case 3: code += "::||:";
@@ -27,7 +27,7 @@ public class Barcode{
  	}
 	
 	public String toString(){
-		return _zip + " " + toCode();
+		return _zip + " " + toCode(_zip);
 	}
 	
     public Barcode clone(){
