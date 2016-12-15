@@ -27,18 +27,33 @@ public class Sorts{
     public static void insertionSort(int[]data){
 	for(int x = 0; x<data.length-1; x++){
 	    int y = x;
-	    while(data[y+1]<data[y] && y>0){
-		int temp = data[x];
-	        data[x] = data[x+1];
-		data[x+1] = temp;
+	    while(y>=0 && data[y+1]<data[y]){
+		int temp = data[y];
+	        data[y] = data[y+1];
+		data[y+1] = temp;
 		y--;
 	       
 	    }
 	    System.out.println(Arrays.toString(data));
 	}
     }
+    
+    public static void bubbleSort(int[] data){
+	boolean isNotSorted = true;
+	while(isNotSorted){
+	    isNotSorted = false;
+	    for(int x = 0; x<data.length-1; x++){
+		if(data[x+1]<data[x]){
+		    int temp = data[x];
+		    data[x] = data[x+1];
+		    data[x+1] = temp;
+		    isNotSorted =  true;
+		}
+	    }
+	}
+    }
 		
-	
+		    
     public static void main(String[] args){
 	int[]ary = {64, 25, 12, 22, 11, 345, 3245 ,0234, 34, 643};
 	int[]ary2 = {64, 25, 12, 22, 11, 345, 3245 ,0234, 34, 643};
@@ -48,7 +63,7 @@ public class Sorts{
 	    System.out.println(x);
 	}
 	System.out.println();
-	Sorts.insertionSort(ary2);
+	Sorts.bubbleSort(ary2);
 	for(int x: ary2){
 	    System.out.println(x);
 	}
