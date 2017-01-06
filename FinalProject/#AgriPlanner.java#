@@ -26,6 +26,7 @@ public class AgriPlanner extends JFrame implements ActionListener{
 	b2.addActionListener(this);
 	b2.setActionCommand("NotByte");
 	t = new JTextField(10);
+	JCheckBox circle = new JCheckBox("Circles");
 	JCheckBox c = new JCheckBox("Circles");
 	j = new JLabel("Meaning of life is... ");
 	pane.add(c);

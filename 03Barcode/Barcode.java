@@ -12,15 +12,15 @@ public class Barcode{
 		for(int i = 0; i< zip.length(); i++){
 	    	switch(zip.charAt(i) - '0'){
 	    		case 1: code += ":::||";
-				case 2: code += "::|:|";
-				case 3: code += "::||:";
-				case 4: code += ":|::|";
-				case 5: code += ":|:|:";
-				case 6: code += ":||::";
-				case 7: code += "|:::|";
-				case 8: code += "|::|:";
-				case 9: code += "|:|::";
-				case 0: code += "||:::";
+			case 2: code += "::|:|";
+			case 3: code += "::||:";
+		       	case 4: code += ":|::|";
+		       	case 5: code += ":|:|:";
+		       	case 6: code += ":||::";
+	       		case 7: code += "|:::|";
+	       		case 8: code += "|::|:";
+	       		case 9: code += "|:|::";
+	       		case 0: code += "||:::";
 		    }
   	    }
 		return code + checkSum() + "|";
@@ -52,6 +52,7 @@ public class Barcode{
 	
     public static void main(String[] args){
 		Barcode a = new Barcode("01305");
+		System.out.println(Barcode.toCode("01305"));
     }
 
    
