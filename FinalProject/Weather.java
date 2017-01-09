@@ -2,10 +2,10 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-
 public class Weather{
 	//http://api.wunderground.com/api/0eda91f94dd93a2c/planner_MMDDMMDD/q/CA/San_Francisco.json
-	public static String averageGDD(int year, int month, int day, int requiredGDD, String state, String city){
+	public static int averageWeeklyGDD(int year, int month, int day, int requiredGDD, String state, String city){
+		int gddSum = 0;
 		city = city.replaceAll(" ", "_");
 		month = month - 1;
 		Calendar cal = new GregorianCalendar(year, month, day);
@@ -30,12 +30,16 @@ public class Weather{
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		return content;
+		System.out.println(content);
+		return Integer.parseInt(content.substring(content.indexOf("\"avg\":") + 17, content.indexOf("\"avg\":") + 19));
+
+
+
 	}
 
 
 	public static void main(String[] args){
-		System.out.println(Weather.averageGDD(2016, 5, 30, 293, "NY", "New York"));
+		System.out.println(Weather.averageWeeklyGDD(2016, 2, 1, 293, "NY", "New York"));
 	}
 }
 
