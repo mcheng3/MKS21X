@@ -2,21 +2,34 @@ import java.net.*;
 import java.io.*;
 import java.util.*;
 import java.text.SimpleDateFormat;
-public class Locale{
-	private String weatherJSON;
+import org.json.*;
 
-	public Locale(int year, int month, int day, String state, String city){
-		int gddSum = 0;
-		city = city.replaceAll(" ", "_");
+public class Weather{
+	private JSONObject weatherJSON;
+	private Calendar cal;
+	private String state;
+	private String city;
+
+	public Weather(int year, int month, int day, String state, String city){
+		this.city = city.replaceAll(" ", "_");
+		this.state = state;
 		month = month - 1;
-		Calendar cal = new GregorianCalendar(year, month, day);
-		Date startDate = cal.getTime();
-		cal.add(Calendar.DAY_OF_MONTH, 7);
-		Date endDate = cal.getTime();
+		cal = new GregorianCalendar(year, month, day);
+		weatherJSON = new JSONObject(getData(cal));
+
+
+
+	}
+
+	public String getData(Calendar calendar){
+		Calendar calTemp = (Calendar) calendar.clone();
+		Date startDate = calTemp.getTime();
+		calTemp.add(Calendar.DAY_OF_MONTH, 12);
+		Date endDate = calTemp.getTime();
 		SimpleDateFormat dateFormat = new SimpleDateFormat("MMdd");
 		String start = dateFormat.format(startDate);
 		String end = dateFormat.format(endDate);
-		String  content = "";
+		String content = "";
 		try{
 			URL apiURL = new URL("http://api.wunderground.com/api/0eda91f94dd93a2c/planner_"+start+end+"/q/"+state+"/"+city+".json");
 			URLConnection apiURLConnection = apiURL.openConnection();
@@ -31,13 +44,33 @@ public class Locale{
 		catch(Exception e){
 			e.printStackTrace();
 		}
-		weatherJSON = content;
-
+		return content;
 	}
 	//http://api.wunderground.com/api/0eda91f94dd93a2c/planner_MMDDMMDD/q/CA/San_Francisco.json
-	public static int daysForGDD(){
+	public int daysForGDD(int requiredGDD, int baseTemp){
+		//SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+		Calendar calTemp = (Calendar) cal.clone();
 
-		return 0; 
+		JSONObject data = weatherJSON;
+		int gddSum = 0;
+		int days = 1;
+		int highAvg = Integer.parseInt(data.getJSONObject("trip").getJSONObject("temp_high").getJSONObject("avg").getString("F"));
+		int lowAvg = Integer.parseInt(data.getJSONObject("trip").getJSONObject("temp_low").getJSONObject("avg").getString("F"));
+		while(gddSum < requiredGDD){
+			if(days % 12 == 0){
+				calTemp.add(Calendar.DAY_OF_MONTH, 12);
+				data = new JSONObject(getData(calTemp));
+				highAvg = Integer.parseInt(data.getJSONObject("trip").getJSONObject("temp_high").getJSONObject("avg").getString("F"));
+				lowAvg = Integer.parseInt(data.getJSONObject("trip").getJSONObject("temp_low").getJSONObject("avg").getString("F"));
+			}
+			
+			gddSum += (highAvg + lowAvg) / 2 - baseTemp;
+					Date time = calTemp.getTime();
+			//System.out.println(dateFormat.format(time));
+			//System.out.println(gddSum);
+			days++;
+		}
+		return days; 
 	}
 
 	public static int daysForPreciptation(){
@@ -45,7 +78,10 @@ public class Locale{
 	}
 
 	public static void main(String[] args){
-		Locale nyc = new Locale(2016, 5, 9, "NY", "New York");
+		Weather okc = new Weather(2016, 4, 9, "OK", "Oklahoma City");
+		System.out.println(okc.daysForGDD(2000, 50));
+		System.out.println();
+		System.out.println(okc.daysForGDD(2000, 50));
 	}
 }
 
