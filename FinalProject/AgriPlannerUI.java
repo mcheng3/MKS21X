@@ -73,18 +73,10 @@ public class AgriPlannerUI extends javax.swing.JFrame {
         jLabel5.setText("Plot 4");
 
         jTextField1.setName("plot1Radius"); // NOI18N
-        jTextField1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField1ActionPerformed(evt);
-            }
-        });
+    
 
         jTextField2.setName("plot2Radius"); // NOI18N
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
-            }
-        });
+    
 
         jTextField3.setName("plot3Radius"); // NOI18N
 
@@ -94,13 +86,13 @@ public class AgriPlannerUI extends javax.swing.JFrame {
 
         jLabel6.setText("AgriPlanner");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crop", "Corn", "Wheat" }));
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corn", "Wheat" }));
 
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crop", "Corn", "Wheat" }));
+        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corn", "Wheat" }));
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crop", "Corn", "Wheat" }));
+        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corn", "Wheat" }));
 
-        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Crop", "Corn", "Wheat" }));
+        jComboBox4.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Corn", "Wheat" }));
 
         jTextField5.setName("plot1Date"); // NOI18N
 
@@ -285,18 +277,20 @@ public class AgriPlannerUI extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
-
-    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField1ActionPerformed
-
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String event = evt.getActionCommand();
         if(event.equals("Submit")){
-            System.out.println(jTextField1.getText());
+            String crop = jComboBox1.getSelectedItem().toString();
+            System.out.println("Key dates:");
+            System.out.println(jLabel2.getText() + ": " + crop);
+            if (crop.equals("Corn")){
+                Corn plot1Corn = new Corn(jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()));
+                System.out.println("Harvest " + plot1Corn.harvestDate());
+            }
+            else if (crop.equals("Wheat")){
+                Wheat plot1Wheat = new Wheat(jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()));
+                System.out.println("Harvest " + plot1Wheat.harvestDate());
+            }
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
