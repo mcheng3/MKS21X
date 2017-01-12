@@ -1,4 +1,4 @@
-import java.lang.reflect.*;
+
 public class Wheat extends Crop{
 	public Wheat(String date, String state, String city, String soilType, int amountN){
 		super(date, state, city, 2000, 12, 40, 50);
