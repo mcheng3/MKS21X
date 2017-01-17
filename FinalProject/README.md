@@ -1,7 +1,7 @@
 #AgriPlanner
 
 
-AgriPlanner uses historical weather data to give farming directions on fertilizing, watering, and harvesting, given the location, area, soil conditions, and date.
+AgriPlanner uses historical weather data to give farming directions on fertilizing, watering, and harvesting, given the location, area, soil conditions, and date. It works on corn and wheat.
 
 Working features:
 Try changing the latitude of the city (Must be in the U.S.), and note the harvest date difference.
