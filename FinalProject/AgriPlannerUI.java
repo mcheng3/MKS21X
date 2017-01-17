@@ -284,11 +284,15 @@ public class AgriPlannerUI extends javax.swing.JFrame {
             System.out.println("Key dates:");
             System.out.println(jLabel2.getText() + ": " + crop);
             if (crop.equals("Corn")){
-                Corn plot1Corn = new Corn(jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()));
+                Corn plot1Corn = new Corn(
+                    jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()), Double.parseDouble(jTextField1.getText())
+                    );
                 System.out.println("Harvest " + plot1Corn.harvestDate());
             }
             else if (crop.equals("Wheat")){
-                Wheat plot1Wheat = new Wheat(jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()));
+                Wheat plot1Wheat = new Wheat(
+                    jTextField5.getText(), jTextField10.getText(), jTextField9.getText(), jComboBox5.getSelectedItem().toString(), Integer.parseInt(jTextField11.getText()), Double.parseDouble(jTextField1.getText())
+                    );
                 System.out.println("Harvest " + plot1Wheat.harvestDate());
             }
         }

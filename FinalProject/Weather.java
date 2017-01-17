@@ -19,7 +19,13 @@ public class Weather{
 		this.baseTemp = baseTemp;
 		month = month - 1;
 		cal = new GregorianCalendar(year, month, day);
-		weatherJSON = new JSONObject(getData(cal));
+		try{
+			weatherJSON = new JSONObject(getData(cal));
+		}
+		catch(JSONException e){
+			System.out.println("Invalid city. Please try again.");
+			System.exit(0);
+		}
 
 
 
