@@ -42,7 +42,9 @@ public class Weather{
 		String content = "";
 		try{
 			URL apiURL = new URL("http://api.wunderground.com/api/0eda91f94dd93a2c/planner_"+start+end+"/q/"+state+"/"+city+".json");
-			URLConnection apiURLConnection = apiURL.openConnection();
+			InetAddress addr = InetAddress.getByName("149.89.1.30");
+			Proxy proxy = new Proxy(Proxy.Type.HTTP, new InetSocketAddress(addr, 3128));			
+			URLConnection apiURLConnection = apiURL.openConnection(proxy);
 			BufferedReader br = new BufferedReader(new InputStreamReader(apiURLConnection.getInputStream()));
 			String inputLine;
 			while ((inputLine = br.readLine()) != null)
