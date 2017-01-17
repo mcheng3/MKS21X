@@ -1,11 +1,13 @@
 public class Corn extends Crop{
-	private int n = 0;
+
 	public Corn(String date, String state, String city, String soilType, double amountN, double radius){
 		super(date, state, city, 2100, 18.0, 50, amountN, Math.PI * Math.pow(radius, 2));
-		if (soilType.equals("Loam")) setN(50);
-		else if (soilType.equals("Sand")) setN(30);
-		else if (soilType.equals("Clay")) setN(70);
-		//https://www.extension.umn.edu/agriculture/nutrient-management/nutrient-lime-guidelines/docs/FO-3772-C-1.pdf
+
+		if (soilType.equals("Loam")) setN(160.0);
+		else if (soilType.equals("Sand")) setN(130.0);
+		else if (soilType.equals("Clay")) setN(160.0);
+		//http://www.extension.umn.edu/agriculture/nutrient-management/nutrient-lime-guidelines/fertilizer-recommendations-for-agronomic-crops-in-minnesota/corn/
+
 	}
 		
 	

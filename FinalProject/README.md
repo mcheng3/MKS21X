@@ -3,6 +3,8 @@
 
 AgriPlanner uses historical weather data to give farming directions on fertilizing, watering, and harvesting, given the location, area, soil conditions, and date.
 
+AgriPlanner accesses from the Weather Underground API.
+
 Working features:
 Try changing the latitude of the city (Must be in the U.S.), and note the harvest date difference.
 Try changing the city to a city of a different climate, and note the irrigation difference.
