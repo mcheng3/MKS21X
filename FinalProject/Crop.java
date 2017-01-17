@@ -1,5 +1,5 @@
 import java.util.*;
-import java.text.SimpleDateFormat;
+import java.text.*;
 
 public class Crop{	
 	private Date d;
@@ -33,7 +33,7 @@ public class Crop{
 		cal.add(Calendar.DAY_OF_MONTH, w.daysForGDD());
 		Date harvestDate = cal.getTime();
 		String s = format.format(harvestDate);
-		return s + " : Harvest crop";
+		return "Harvest crop on " + s;
 	}
 
 	public String waterNeeded(){
@@ -44,7 +44,10 @@ public class Crop{
 		if(precip >= requiredWater) return "No irrigation needed";
 		else inches = requiredWater - precip;
 		volume = area * inches / 12.0 * 7.48052; 
-		return "Irrigate with " + volume + "gallons of water";
+		volume = Math.round (volume * 5) / 5;  
+		NumberFormat formatter = new DecimalFormat("###");  
+		String gallons = formatter.format(volume);  
+		return "Irrigate with " + gallons + " gallons of water";
 	}
 
 	public void setN(int nitrogen){

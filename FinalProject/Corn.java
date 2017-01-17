@@ -14,7 +14,7 @@ public class Corn extends Crop{
 		Corn plot1 = new Corn("4/11/2016", "OK", "Oklahoma City", "Loam", 120, 2000.0);
 		System.out.println(plot1.harvestDate());
 		System.out.println(plot1.waterNeeded());
-		Corn plot2 = new Corn("4/11/2016", "TX", "Dallas", "Sand", 120, 1.0);
+		Corn plot2 = new Corn("4/11/2016", "TX", "Dallas", "Sand", 120, 5000.0);
 		//System.out.println(plot2.harvestDate());
 		System.out.println(plot2.waterNeeded());
 	}

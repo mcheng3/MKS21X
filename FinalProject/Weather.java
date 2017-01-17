@@ -91,7 +91,7 @@ public class Weather{
 		double precipAvg = Double.parseDouble(data.getJSONObject("trip").getJSONObject("precip").getJSONObject("avg").getString("in"));
 		while(days <= daysForGDD){
 			if(days % 14 == 0){
-				calTemp.add(Calendar.DAY_OF_MONTH, 12);
+				calTemp.add(Calendar.DAY_OF_MONTH, 14);
 				data = new JSONObject(getData(calTemp));
 				precipAvg = Double.parseDouble(data.getJSONObject("trip").getJSONObject("precip").getJSONObject("avg").getString("in"));
 			}
