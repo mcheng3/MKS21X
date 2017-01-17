@@ -17,7 +17,7 @@ public class Crop{
 			d = format.parse(date);
 		}
 		catch (Exception e){
-			e.printStackTrace();
+			System.out.println("Make sure that the form is filled out correctly");
 		}
 		Calendar c = Calendar.getInstance();
 		c.setTime(d);
@@ -43,7 +43,7 @@ public class Crop{
 		double inches;
 		double volume;
 		double precip = w.inchesPrecip();
-		System.out.println(requiredWater);
+		//System.out.println(requiredWater);
 		if(precip >= requiredWater) return "No irrigation needed";
 		else inches = requiredWater - precip;
 		volume = area * inches / 12.0 * 7.48052; 
@@ -63,7 +63,7 @@ public class Crop{
 		double poundsN = area * 2.29568e-5 * nNeeded;
 		NumberFormat formatter = new DecimalFormat("###");  
 		String pounds = formatter.format(poundsN);  
-		return "Fertilize with " + pounds + " lb. N fertilizer";
+		return "Before sowing, fertilize with " + pounds + " lb. N fertilizer";
 
 	}
 

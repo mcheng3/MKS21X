@@ -41,7 +41,7 @@ public class Weather{
 		String end = dateFormat.format(endDate);
 		String content = "";
 		try{
-			URL apiURL = new URL("http://api.wunderground.com/api/0eda91f94dd93a2c/planner_"+start+end+"/q/"+state+"/"+city+".json");
+			URL apiURL = new URL("http://api.wunderground.com/api/8989ccd2bfe08353/planner_"+start+end+"/q/"+state+"/"+city+".json");
 			URLConnection apiURLConnection = apiURL.openConnection();
 			BufferedReader br = new BufferedReader(new InputStreamReader(apiURLConnection.getInputStream()));
 			String inputLine;
@@ -99,7 +99,7 @@ public class Weather{
 			//System.out.println(dateFormat.format(time));
 
 			precipSum += precipAvg;
-			System.out.println(precipSum);
+			//System.out.println(precipSum);
 			days++;
 		}
 		return precipSum; 
