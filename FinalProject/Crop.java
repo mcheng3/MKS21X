@@ -7,9 +7,11 @@ public class Crop{
 	private int requiredN;
 	private double requiredWater;
 	private double area;
+	private double amountN;
+	private double n;
 
 	SimpleDateFormat format = new SimpleDateFormat("MM/dd/yyyy");
-	public Crop(String date, String state, String city, int requiredGDD, double requiredWater, int baseTemp, double area){
+	public Crop(String date, String state, String city, int requiredGDD, double requiredWater, int baseTemp, double amountN, double area){
 		
 		try {
 			d = format.parse(date);
@@ -24,6 +26,7 @@ public class Crop{
     	int day = c.get(Calendar.DAY_OF_MONTH);
     	this.requiredWater = requiredWater;
     	this.area = area;
+    	this.amountN = amountN;
 		w = new Weather(year, month, day, state, city, requiredGDD, baseTemp);
 	}
 
@@ -44,18 +47,24 @@ public class Crop{
 		if(precip >= requiredWater) return "No irrigation needed";
 		else inches = requiredWater - precip;
 		volume = area * inches / 12.0 * 7.48052; 
-		volume = Math.round (volume * 5) / 5;  
 		NumberFormat formatter = new DecimalFormat("###");  
 		String gallons = formatter.format(volume);  
 		return "Irrigate with " + gallons + " gallons of water";
 	}
 
-	public void setN(int nitrogen){
- 
+	public void setN(double nitrogen){
+ 		n = nitrogen;
 	}
 
 	public String requiredN(){
-		return "placeholder";
+		double nNeeded;
+		if(amountN >= n) return "No fertilizing needed";
+		else nNeeded = n - amountN;
+		double poundsN = area * 2.29568e-5 * nNeeded;
+		NumberFormat formatter = new DecimalFormat("###");  
+		String pounds = formatter.format(poundsN);  
+		return "Fertilize with " + pounds + " lb. N fertilizer";
+
 	}
 
 

@@ -2,9 +2,9 @@ public class Corn extends Crop{
 	private int n = 0;
 	public Corn(String date, String state, String city, String soilType, int amountN, double radius){
 		super(date, state, city, 2100, 18.0, 50, Math.PI * Math.pow(radius, 2));
-		if (soilType.equals("Loam")) n = 160;
-		else if (soilType.equals("Sand")) n = 130;
-		else if (soilType.equals("Clay")) n = 160;
+		if (soilType.equals("Loam")) setN(160);
+		else if (soilType.equals("Sand")) setN(130);
+		else if (soilType.equals("Clay")) setN(160);
 	}
 		
 	
