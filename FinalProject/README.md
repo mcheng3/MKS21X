@@ -17,11 +17,15 @@ Compiling Directions:
 Running on a Windows command window is GREATLY preferred.
 
 Linux:
+
 javac -cp .:json-20160810.jar AgriPlannerUI.java
+
 java -cp .:json-20160810.jar AgriPlannerUI
 
 Windows:
+
 javac -cp .;json-20160810.jar AgriPlannerUI.java
+
 java -cp .;json-20160810.jar AgriPlannerUI
 
 
